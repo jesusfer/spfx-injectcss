@@ -21,11 +21,13 @@ export default class InjectCssApplicationCustomizer
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
     const cssUrl: string = this.properties.cssurl;
+    console.log(`Injecting: ${cssUrl}`)
+
     if (cssUrl) {
         // inject the style sheet
         const head: any = document.getElementsByTagName("head")[0] || document.documentElement;
         let customStyle: HTMLLinkElement = document.createElement("link");
-        customStyle.href = cssUrl;
+        customStyle.href = `${cssUrl}?ts=${Date.now()}`;
         customStyle.rel = "stylesheet";
         customStyle.type = "text/css";
         head.insertAdjacentElement("beforeEnd", customStyle);

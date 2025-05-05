@@ -1,10 +1,10 @@
 # Change these variables to enable the extension
-$customCSSUrl = "/Style%20Library/custom.css"
-$tenantUrl = "https://<your-tenant>.sharepoint.com/sites/<your-site>"
+$customCSSUrl = "/sites/some-site/SiteAssets/custom.css"
+$tenantId = "<your-tenant>.onmicrosoft.com"
+$tenantUrl = "https://<your-tenant>.sharepoint.com"
+$clientId = "00000000-0000-0000-0000-000000000000"
 
-# Get credentials
-$credentials = Get-Credential
-Connect-PnPOnline $tenantUrl -Credentials $credentials
+Connect-PnPOnline $tenantUrl -ClientId $clientId -Tenant $tenantId -DeviceLogin
 
 # Connect to tenant
 $context = Get-PnPContext
@@ -15,7 +15,7 @@ Invoke-PnPQuery
 # Deploy custom action
 $ca = $web.UserCustomActions.Add()
 $ca.ClientSideComponentId = "5a1fcffd-dfeb-4844-b478-1feb4325a5a7"
-$ca.ClientSideComponentProperties = "{""cssurl"":""$customCSSUrl""}"
+$ca.ClientSideComponentProperties = @{cssurl = $customCSSUrl } | ConvertTo-Json
 $ca.Location = "ClientSideExtension.ApplicationCustomizer"
 $ca.Name = "InjectCssApplicationCustomizer"
 $ca.Title = "Inject CSS Application Extension"

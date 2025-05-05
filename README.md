@@ -18,7 +18,7 @@ Please refrain from making drastic changes that may negatively impact your users
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.8](https://img.shields.io/badge/SPFx-1.8-green.svg)
+![SPFx v1.21](https://img.shields.io/badge/SPFx-1.21-green.svg)
 
 ## Applies to
 
@@ -38,6 +38,7 @@ Version|Date|Comments
 1.0.0|07 May, 2018|Initial release
 1.1.0|18 October, 2018|Updated to SPFx 1.6
 1.2.0|28 March, 2018|Updated to SPFx 1.8
+1.3.0|05 May, 2025|Updated to SPFx 1.21
 
 ## Disclaimer
 
@@ -72,16 +73,16 @@ For example, the CSS provided above will make the feedback button appear as foll
 
 ### Manual deployment
 
-1. Upload the `react-application-injectcss.sppkg` from the `sharepoint` folder to your App catalog.
+1. Upload the `spfx-injectcss.sppkg` from the `sharepoint` folder to your App catalog.
 2. When prompted to deploy to all sites, choose the option that suits your needs.
 
 ### Automated deployment
 
-1. If you have not done so already, install the [PnP PowerShell Cmdlets](https://aka.ms/sppnp-powershell)
-2. Edit the `DeployApplicationCustomizer.ps1` file and change the `$tenantUrl` variable to point to your tenant.
+1. If you have not done so already, install the [PnP PowerShell Cmdlets](https://pnp.github.io/powershell/#getting-up-and-running) and follow the steps in the "Getting up and running" section.
+2. Edit the `DeployApplicationCustomizer.ps1` file and change the variables at the top to point to your tenant.
 3. From a PowerShell console, run the `DeployApplicationCustomizer.ps1` script to automatically deploy to all sites.
-4. You will be prompted to enter your credentials.
-5. After providing your credentials, the extension will be deployed
+4. You will be prompted to enter your credentials when using the device code authentication flow.
+5. After authorizing the script, the extension will be deployed.
 
 ## Changing the CSS location
 
@@ -97,7 +98,7 @@ Note that if you intend to deploy this extension tenant-wide, your custom CSS UR
 2. Change the `ClientSideComponentProperties` to point to your custom CSS URL.
 3. Run `gulp bundle --ship`
 4. Run `gulp package-solution --ship`
-5. Upload the `react-application-injectcss.sppkg` from the `sharepoint` folder to your App catalog.
+5. Upload the `spfx-injectcss.sppkg` from the `sharepoint` folder to your App catalog.
 6. When prompted to deploy to all sites, choose the option that suits your needs.
 
 ### Using automated deployment

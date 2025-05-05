@@ -1,9 +1,10 @@
 $tenantUrl = "https://<your-tenant>.sharepoint.com/sites/<your-site>"
+$tenantId = "<your-tenant>.onmicrosoft.com"
+$tenantUrl = "https://<your-tenant>.sharepoint.com/sites/<your-site>"
+$clientId = "00000000-0000-0000-0000-000000000000"
 
-# Get credentials
-$credentials = Get-Credential
-Connect-PnPOnline $tenantUrl -Credentials $credentials
+Connect-PnPOnline $tenantUrl -ClientId $clientId -Tenant $tenantId -DeviceLogin
 
 # Connect to tenant
-Get-PnPCustomAction | ? Name -eq "InjectCssApplicationCustomizer" | Remove-PnPCustomAction
+Get-PnPCustomAction | Where-Object Name -eq "InjectCssApplicationCustomizer" | Remove-PnPCustomAction
 
