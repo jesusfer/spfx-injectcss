@@ -30,6 +30,7 @@ Please refrain from making drastic changes that may negatively impact your users
 Solution|Author(s)
 --------|---------
 react-application-injectcss|Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+spfx-injectcss|Jesús Fernández (MSFT, @jesusfer)
 
 ## Version history
 
